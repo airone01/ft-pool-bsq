@@ -12,6 +12,8 @@
 
 #include "h_main.h"
 
+#include <stdio.h>
+
 /*
  * Counts the size of an array of string.
  * This is assuming that the array of strings ends
@@ -25,7 +27,7 @@
 int	strs_size(char **strs)
 {
 	if (*strs == 0)
-		return (1);
+		return (0);
 	return (strs_size(strs + 1) + 1);
 }
 
@@ -34,8 +36,6 @@ int	strs_size(char **strs)
  * the square root of the whole map.
  * Additionally sets a pointer to an int to the
  * length of the map for later use.
- *
- * TODO: PATCH THIS THING
  *
  * @param	str	map
  * @param	len	pointer to an int
@@ -50,6 +50,7 @@ t_bool	bsq_map_valid(char **strs, int *len)
 	*len = strs_size(strs);
 	while (i < *len)
 	{
+		// printf("str: %d, og: %d\n", ft_strlen(strs[i]), *len);
 		if (ft_strlen(strs[i]) != *len)
 			return (false);
 		i++;
@@ -138,6 +139,8 @@ t_map	*bsq_map_read(char *fname, int fsize)
 	if (!bsq_map_valid(strs, &len))
 		return (NULL);
 	map = strs_to_map(strs, len);
+	if (map == NULL)
+		return (NULL);
 	free(strs);
 	final = malloc(sizeof(t_map));
 	final->map = map;
