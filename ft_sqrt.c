@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   h_main.h                                           :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 10:49:57 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/30 16:57:49 by elagouch         ###   ########.fr       */
+/*   Created: 2024/09/30 16:53:46 by elagouch          #+#    #+#             */
+/*   Updated: 2024/09/30 16:54:48 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef H_MAIN_H
-# define H_MAIN_H
+/*
+ * Gets the square root of a number.
+ *
+ * @param	nb	number
+ *
+ * @returns	square root
+ * @returns	0 if no square root is found
+ */
+int	ft_sqrt(int nb)
+{
+	int	i;
 
-# include "h_bsq.h"
-# include "h_file.h"
-# include "h_math.h"
-# include "h_str.h"
-# include "h_types.h"
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-#endif
+	if (nb <= 1)
+		return (0);
+	i = 1;
+	while ((i * i) < nb)
+		i++;
+	if ((i * i) == nb)
+		return (i);
+	return (0);
+}

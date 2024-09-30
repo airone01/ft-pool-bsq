@@ -23,7 +23,7 @@ char			*ft_strjoin(int size, char **strs, char *sep);
 char			*ft_strcut(char *str, int start, int finish);
 char			*ft_strcat(char *dest, char *src);
 char			*ft_strcpy(char *dest, char *src);
-char			**ft_split(char *str, char c);
+char			**ft_strsplit(char *str, char c);
 char			*ft_strdup(char *src);
 char			*ft_strnew(int size);
 int				ft_strcount_words_sep(char *str, char sep);

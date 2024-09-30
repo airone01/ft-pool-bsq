@@ -19,6 +19,7 @@ SRC = main.c					\
       ft_strsplit.c				\
       ft_strcat.c				\
       ft_strcmp.c				\
+	  ft_strcount_words.c		\
 	  ft_strcpy.c				\
 	  ft_strcut.c				\
       ft_strdup.c				\
