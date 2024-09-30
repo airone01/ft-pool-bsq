@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:50:48 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/30 13:25:50 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:03:12 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@ void			ft_putstr(char *str);
 void			ft_puterr(char *str);
 // Strings manipulation
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
-char			**ft_split2(char *str, char *charset);
-char			**ft_split(char *str, char *charset);
 char			*ft_strncpy(char *dest, char *src, unsigned int n);
 char			*ft_strjoin(int size, char **strs, char *sep);
+char			*ft_strcut(char *str, int start, int finish);
 char			*ft_strcat(char *dest, char *src);
 char			*ft_strcpy(char *dest, char *src);
+char			**ft_split(char *str, char c);
 char			*ft_strdup(char *src);
 char			*ft_strnew(int size);
+int				ft_strcount_words_sep(char *str, char sep);
 int				ft_strcmp(char *s1, char *s2);
 int				ft_strcount_words(char *str);
 int				ft_strlen(char *str);

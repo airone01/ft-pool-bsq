@@ -11,13 +11,14 @@
 /* ************************************************************************** */
 
 /*
- * Counts words in a string, separated by whitespaces.
+ * Counts words in a string, separated by a given separator.
  *
- * @param	str	string
+ * @param	str	string to count in
+ * @param	sep	char suposedly used as separator
  *
  * @returns	amount of words
  */
-int	ft_strcount_words(char *str)
+int	ft_strcount_words_sep(char *str, char sep)
 {
 	int	sum;
 	int	i;
@@ -28,7 +29,7 @@ int	ft_strcount_words(char *str)
 	{
 		if (str[i] > 32 && str[i] < 127)
 		{
-			if (str[i + 1] == ' ')
+			if (str[i + 1] == sep)
 				sum++;
 			if (str[i + 1] == '\0')
 				return (sum + 1);
@@ -36,4 +37,16 @@ int	ft_strcount_words(char *str)
 		i++;
 	}
 	return (sum);
+}
+
+/*
+ * Counts words in a string, separated by whitespaces.
+ *
+ * @param	str	string
+ *
+ * @returns	amount of words
+ */
+int	ft_strcount_words(char *str)
+{
+	return (ft_strcount_words_sep(str, ' '));
 }

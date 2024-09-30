@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   h_types.h                                          :+:      :+:    :+:   */
+/*   h_file.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 13:41:58 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/30 14:47:26 by elagouch         ###   ########.fr       */
+/*   Created: 2024/09/30 14:57:52 by elagouch          #+#    #+#             */
+/*   Updated: 2024/09/30 14:58:22 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef H_TYPES_H
-# define H_TYPES_H
+#ifndef H_FILE_H
+# define H_FILE_H
 
-typedef enum e_map_val
-{
-	epty,
-	obst
-}				t_map_val;
-typedef struct s_map
-{
-	t_map_val	**map;
-	int			len;
-}				t_map;
-typedef enum e_bool
-{
-	false,
-	true
-}				t_bool;
+void	*ft_file_read(char *fname, int fsize);
 
 #endif

@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bsq_map_read.c                                     :+:      :+:    :+:   */
+/*   ft_file.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 14:43:52 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/30 16:07:29 by elagouch         ###   ########.fr       */
+/*   Created: 2024/09/30 14:54:39 by elagouch          #+#    #+#             */
+/*   Updated: 2024/09/30 15:01:49 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "h_main.h"
 
 /*
- * Reads a map from a file name.
+ * Allocates a buffer and reads a file to it.
  *
- * @param	fname	file name
- * @param	fsize	file size
+ * @param	fname	path of the file
+ * @param	fsize	number of bytes to read
  *
- * @returns	allocated map with data
+ * @returns	buffer with read data
  * @returns	null if error
  */
-t_map	*bsq_map_read(char *fname, int fsize)
+void	*ft_file_read(char *fname, int fsize)
 {
-	t_map_val	**map;
-	t_map		*final;
-	char		*str;
+	void	*buff;
+	int		fd;
 
-	str = (char *)ft_file_read(fname, fsize);
-	if (str == NULL)
+	fd = open(fname, O_RDONLY, 0);
+	if (fd == -1)
 		return (NULL);
-	return (final);
+	buff = malloc(fsize * sizeof(char));
+	if (read(fd, buff, fsize))
+	{
+		free(buff);
+		close(fd);
+		return (NULL);
+	}
+	close(fd);
+	return (buff);
 }

@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bsq_map_read.c                                     :+:      :+:    :+:   */
+/*   ft_strcut.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 14:43:52 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/30 16:07:29 by elagouch         ###   ########.fr       */
+/*   Created: 2024/09/30 15:58:23 by elagouch          #+#    #+#             */
+/*   Updated: 2024/09/30 16:06:02 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "h_main.h"
 
 /*
- * Reads a map from a file name.
+ * Allocates and cuts a word from `start` to `finish`.
  *
- * @param	fname	file name
- * @param	fsize	file size
+ * @param	str		source string
+ * @param	start	starting index
+ * @param	finish	ending index
  *
- * @returns	allocated map with data
- * @returns	null if error
+ * @returns duplicated and cut string
  */
-t_map	*bsq_map_read(char *fname, int fsize)
+char	*ft_strcut(char *str, int start, int finish)
 {
-	t_map_val	**map;
-	t_map		*final;
-	char		*str;
+	char	*word;
+	int		i;
 
-	str = (char *)ft_file_read(fname, fsize);
-	if (str == NULL)
-		return (NULL);
-	return (final);
+	i = 0;
+	word = (char *) malloc((finish - start + 1) * sizeof(char));
+	while (start < finish)
+		word[i++] = str[start++];
+	word[i] = '\0';
+	return (word);
 }
