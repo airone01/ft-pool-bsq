@@ -14,15 +14,25 @@
 
 int	main(int argc, char **argv)
 {
-	int	i;
+	t_map	*map;
+	int		i;
+	int		len;
 
 	i = 1;
 	while (i < argc)
 	{
-		if (bsq_map_file_size(argv[i]))
+		len = bsq_map_file_size(argv[i]);
+		if (len == -1)
 		{
 			ft_puterr("map error\n");
 			break ;
 		}
+		map = bsq_map_read(argv[i], len);
+		if (map == NULL)
+		{
+			ft_puterr("map error\n");
+			break ;
+		}
+		i++;
 	}
 }

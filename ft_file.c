@@ -30,7 +30,7 @@ void	*ft_file_read(char *fname, int fsize)
 	if (fd == -1)
 		return (NULL);
 	buff = malloc(fsize * sizeof(char));
-	if (read(fd, buff, fsize))
+	if (read(fd, buff, fsize) == -1)
 	{
 		free(buff);
 		close(fd);

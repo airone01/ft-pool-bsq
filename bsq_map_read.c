@@ -35,6 +35,8 @@ int	strs_size(char **strs)
  * Additionally sets a pointer to an int to the
  * length of the map for later use.
  *
+ * TODO: PATCH THIS THING
+ *
  * @param	str	map
  * @param	len	pointer to an int
  *

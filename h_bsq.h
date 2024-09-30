@@ -15,5 +15,6 @@
 
 // BSQ functions
 int	bsq_map_file_size(char *arg);
+t_map	*bsq_map_read(char *fname, int fsize);
 
 #endif
