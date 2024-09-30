@@ -6,14 +6,14 @@
 <!-- By: elagouch <elagouch@42>                     +#+  +:+       +#+       -->
 <!--                                              +#+#+#+#+#+   +#+          -->
 <!-- Created: 2024/09/30 09:58:44 by elagouch          #+#    #+#            -->
-<!-- Updated: 2024/09/30 09:59:38 by elagouch         ###   ########.fr      -->
+<!-- Updated: 2024/09/30 10:00:24 by elagouch         ###   ########.fr      -->
 <!--                                                                         -->
 <!-- *********************************************************************** -->
 
 <div align="center">
   <img src="https://skillicons.dev/icons?i=git,c,vim,linux" />
   <h3>BSQ</h3>
-  <h6>By Mathi & Erwann</h6>
+  <h6>By Mathis & Erwann</h6>
 </div>
 
 ---
