@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   h_types.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 10:11:15 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/30 13:56:57 by elagouch         ###   ########.fr       */
+/*   Created: 2024/09/30 13:41:58 by elagouch          #+#    #+#             */
+/*   Updated: 2024/09/30 13:43:04 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "h_main.h"
+#ifndef H_TYPES_H
+# define H_TYPES_H
 
-int	main(int argc, char **argv)
+typedef struct s_map
 {
-	int	i;
+	int	**map;
+	int	len;
+}		t_map;
+typedef enum ft_bool
+{
+	false,
+	true
+}		t_bool;
 
-	i = 1;
-	while (i < argc)
-	{
-		if (bsq_map_file_size(argv[i]))
-		{
-			ft_puterr("map error\n");
-			break ;
-		}
-	}
-}
+#endif

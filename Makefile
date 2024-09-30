@@ -6,7 +6,7 @@
 #    By: elagouch <elagouch@42>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/30 10:52:47 by elagouch          #+#    #+#              #
-#    Updated: 2024/09/30 10:55:14 by elagouch         ###   ########.fr        #
+#    Updated: 2024/09/30 13:52:40 by elagouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,9 @@ SRC = main.c					\
       ft_strlen.c				\
 	  ft_strncpy.c				\
       ft_strnew.c				\
-	  bsq_solve.c
+      bsq_map_read.c
+      # ft_strnew.c				\
+	  # bsq_solve.c
 OBJ = $(SRC:.c=.o)
 
 all: $(PROG)
