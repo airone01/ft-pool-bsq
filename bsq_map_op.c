@@ -19,7 +19,7 @@
  */
 void	bsq_map_free(t_tile **map, t_coords coords)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (i < coords.y)
