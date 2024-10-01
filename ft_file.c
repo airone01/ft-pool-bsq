@@ -37,6 +37,6 @@ void	*ft_file_read(char *fname, int fsize)
 		return (NULL);
 	}
 	close(fd);
-	((char *)buff)[ft_strlen((char *) buff)] = '\0';
+	((char *)buff)[fsize] = '\0';
 	return (buff);
 }
