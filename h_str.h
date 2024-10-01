@@ -18,6 +18,8 @@ void			ft_putstr(char *str);
 void			ft_puterr(char *str);
 // Strings manipulation
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
+t_bool			char_is_alpha(char c);
+t_bool			char_is_num(char c);
 char			*ft_strncpy(char *dest, char *src, unsigned int n);
 char			*ft_strjoin(int size, char **strs, char *sep);
 char			*ft_strcut(char *str, int start, int finish);

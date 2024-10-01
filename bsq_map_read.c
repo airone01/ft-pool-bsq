@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:43:52 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/30 17:14:16 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/10/01 10:10:03 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,83 +35,53 @@ int	strs_size(char **strs)
  * Checks if the map is correct by calculating
  * the square root of the whole map.
  * Additionally sets a pointer to an int to the
- * length of the map for later use.
+ * length and width of the map for later use.
  *
- * @param	str	map
- * @param	len	pointer to an int
+ * @param	str		map
+ * @param	coords	lengths of x and y of the map
  *
  * @returns	true or false
  */
-t_bool	bsq_map_valid(char **strs, int *len)
+t_bool	bsq_map_valid(char **strs, t_coords *coords)
 {
 	int	i;
 
-	i = 0;
-	*len = strs_size(strs);
-	while (i < *len)
+	coords->y = ft_atoi(strs[0]);
+	if (strs_size(strs) - 1 != coords->y)
+		return (false);
+	coords->x = ft_strlen(strs[1]);
+	i = 1;
+	while (i < coords->y)
 	{
-		// printf("str: %d, og: %d\n", ft_strlen(strs[i]), *len);
-		if (ft_strlen(strs[i]) != *len)
+		if (ft_strlen(strs[i]) != coords->x)
 			return (false);
 		i++;
 	}
 	return (true);
 }
 
-t_map_val	**init_map(int len)
-{
-	t_map_val	**map;
-	int			i;
-	int			j;
-
-	map = (t_map_val **)malloc(len * sizeof(t_map_val *));
-	i = 0;
-	while (i < len)
-	{
-		map[i] = (t_map_val *)malloc(len * sizeof(t_map_val));
-		j = 0;
-		while (j < len)
-		{
-			map[i][j] = epty;
-			j++;
-		}
-		i++;
-	}
-	return (map);
-}
-
 /*
- * Converts an array of strings to
- * an array of t_map_val.
+ * Gets the metadata from a map array of strings.
  *
  * @param	strs	array of strings
  *
- * @returns	the map
- * @returns	NULL if a character (and hence, the map) was invalid
+ * @returns	t_map map
  */
-t_map_val	**strs_to_map(char **strs, int len)
+t_map	*bsq_map_read_meta(char **strs, t_coords coords)
 {
-	t_map_val	**map;
+	t_map		*final;
 	int			i;
-	int			j;
 
-	map = init_map(len);
+	strs++;
 	i = 0;
-	while (i < len)
-	{
-		j = 0;
-		while (j < len)
-		{
-			if (strs[i][j] != 'o' && strs[i][j] != '.')
-				// TODO: Handle potential leak here
-				return (NULL);
-			if (strs[i][j] == 'o')
-				map[i][j] = obst;
-			j++;
-		}
-		i++;
-	}
-	return (map);
+	while ((strs[0][i++]));
+	final = malloc(sizeof(t_map));
+	final->map = strs;
+	final->coords = coords;
+	final->epty = strs[0][i];
+	final->obst = strs[0][i];
+	final->full = strs[0][i];
+	return (final);
 }
 
 /*
@@ -125,25 +95,18 @@ t_map_val	**strs_to_map(char **strs, int len)
  */
 t_map	*bsq_map_read(char *fname, int fsize)
 {
-	t_map_val	**map;
+	t_coords		coords;
 	t_map		*final;
 	char		**strs;
 	char		*str;
-	int			len;
 
 	str = (char *)ft_file_read(fname, fsize);
 	if (str == NULL)
 		return (NULL);
 	strs = ft_strsplit(str, '\n');
 	free(str);
-	if (!bsq_map_valid(strs, &len))
+	if (!bsq_map_valid(strs, &coords))
 		return (NULL);
-	map = strs_to_map(strs, len);
-	if (map == NULL)
-		return (NULL);
-	free(strs);
-	final = malloc(sizeof(t_map));
-	final->map = map;
-	final->len = len;
+	final = bsq_map_read_meta(strs, coords);
 	return (final);
 }

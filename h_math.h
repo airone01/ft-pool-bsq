@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 16:55:52 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/30 16:58:07 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/10/01 08:22:47 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 # define H_MATH_H
 
 int	ft_sqrt(int nb);
+int	ft_atoi(char *str);
 
 #endif

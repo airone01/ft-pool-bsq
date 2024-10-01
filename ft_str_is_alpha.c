@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   h_bsq.h                                            :+:      :+:    :+:   */
+/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 13:28:59 by elagouch          #+#    #+#             */
-/*   Updated: 2024/10/01 10:13:56 by elagouch         ###   ########.fr       */
+/*   Created: 2024/10/01 08:14:36 by elagouch          #+#    #+#             */
+/*   Updated: 2024/10/01 08:16:40 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef H_BSQ_H
-# define H_BSQ_H
+#include "h_main.h"
 
-// BSQ functions
-t_map	*bsq_map_read(char *fname, int fsize);
-void	bsq_map_put(t_map map);
-int		bsq_map_file_size(char *arg);
+t_bool	char_is_alpha(char c)
+{
+	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+}
 
-#endif
+t_bool	char_is_num(char c)
+{
+	return (c >= '0' && c <= '9');
+}
