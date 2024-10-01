@@ -105,6 +105,19 @@ t_tile	**bsq_map_from_str(char **strs, t_coords coords, t_tiles tiles)
 }
 
 /*
+ * Frees a pointer and returns NULL.
+ *
+ * @param	ptr	pointer to free
+ *
+ * @returns	NULL
+ */
+void	*free_and_null(void *ptr)
+{
+	free(ptr);
+	return (NULL);
+}
+
+/*
  * Reads a map from a file name.
  *
  * @param	fname	file name
@@ -123,12 +136,12 @@ t_map	*bsq_map_read(char *fname, int fsize)
 
 	strs = ft_strsplit((char *)ft_file_read(fname, fsize), '\n');
 	if (!bsq_map_valid(strs, &coords))
-		return (NULL);
+		return (free_and_null(strs));
 	tiles = bsq_map_meta(strs);
 	map = bsq_map_from_str(strs, coords, tiles);
 	final = malloc(sizeof(t_map));
 	if (map == NULL || final == NULL)
-		return (NULL);
+		return (free_and_null(strs));
 	free(strs);
 	final->map = map;
 	final->tiles = tiles;
