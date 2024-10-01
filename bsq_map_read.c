@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:43:52 by elagouch          #+#    #+#             */
-/*   Updated: 2024/10/01 17:05:02 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/10/01 17:15:20 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,7 @@ t_tile	**bsq_map_from_str(char **strs, t_coords coords, t_tiles tiles)
 		j = 0;
 		while (j < coords.x)
 		{
-			if (strs[i][j] != tiles.epty && strs[i][j] != tiles.obst
-				&& strs[i][j] != tiles.full)
+			if (strs[i][j] != tiles.epty && strs[i][j] != tiles.obst)
 			{
 				bsq_map_free(map, coords);
 				return (NULL);
