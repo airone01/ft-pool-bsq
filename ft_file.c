@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:54:39 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/30 15:01:49 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/10/01 15:12:28 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	*ft_file_read(char *fname, int fsize)
 	fd = open(fname, O_RDONLY, 0);
 	if (fd == -1)
 		return (NULL);
-	buff = malloc(fsize * sizeof(char));
+	buff = malloc(fsize * sizeof(char) + 1);
 	if (read(fd, buff, fsize) == -1)
 	{
 		free(buff);

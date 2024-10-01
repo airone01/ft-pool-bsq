@@ -6,7 +6,7 @@
 #    By: elagouch <elagouch@42>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/30 10:52:47 by elagouch          #+#    #+#              #
-#    Updated: 2024/10/01 14:47:05 by elagouch         ###   ########.fr        #
+#    Updated: 2024/10/01 14:50:17 by elagouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,14 +38,15 @@ OBJ = $(SRC:.c=.o)
 
 all: tags $(PROG)
 tags:
-	tags *.c
+	ctags *.c
 $(PROG): $(OBJ)
 	$(CC) $(CFLAGS) -o $(PROG) $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ) tags
+	rm -f $(OBJ)
+	rm -f tags
 fclean: clean
 	rm -f $(PROG)
 re: fclean all
