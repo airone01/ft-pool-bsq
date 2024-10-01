@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:11:15 by elagouch          #+#    #+#             */
-/*   Updated: 2024/10/01 10:14:31 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/30 13:56:57 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,6 @@ int	main(int argc, char **argv)
 			ft_puterr("map error\n");
 			break ;
 		}
-		//
-		// SOLVE HERE
-		//
 		bsq_map_put(*map);
 		i++;
 	}

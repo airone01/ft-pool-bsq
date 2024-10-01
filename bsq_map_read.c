@@ -6,30 +6,12 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:43:52 by elagouch          #+#    #+#             */
-/*   Updated: 2024/10/01 10:10:03 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/10/01 14:43:04 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "h_main.h"
-
 #include <stdio.h>
-
-/*
- * Counts the size of an array of string.
- * This is assuming that the array of strings ends
- * with 0.
- * @see ft_strsplit.c
- *
- * @param	strs	array of strings
- *
- * @returns	size
- */
-int	strs_size(char **strs)
-{
-	if (*strs == 0)
-		return (0);
-	return (strs_size(strs + 1) + 1);
-}
 
 /*
  * Checks if the map is correct by calculating
@@ -46,12 +28,17 @@ t_bool	bsq_map_valid(char **strs, t_coords *coords)
 {
 	int	i;
 
-	coords->y = ft_atoi(strs[0]);
-	if (strs_size(strs) - 1 != coords->y)
+	if (strs == NULL)
 		return (false);
+	coords->y = ft_atoi(strs[0]);
+	i = 0;
+	while (strs[i])
+		i++;
 	coords->x = ft_strlen(strs[1]);
+	if (i - 1 != coords->y)
+		return (false);
 	i = 1;
-	while (i < coords->y)
+	while (i < coords->y - 1)
 	{
 		if (ft_strlen(strs[i]) != coords->x)
 			return (false);
@@ -61,27 +48,60 @@ t_bool	bsq_map_valid(char **strs, t_coords *coords)
 }
 
 /*
- * Gets the metadata from a map array of strings.
+ * Gets the metadata from the map string array.
  *
  * @param	strs	array of strings
  *
- * @returns	t_map map
+ * @returns	metadata as t_tiles
  */
-t_map	*bsq_map_read_meta(char **strs, t_coords coords)
+t_tiles	bsq_map_meta(char **strs)
 {
-	t_map		*final;
-	int			i;
+	t_tiles	tiles;
+	int		i;
 
-	strs++;
 	i = 0;
-	while ((strs[0][i++]));
-	final = malloc(sizeof(t_map));
-	final->map = strs;
-	final->coords = coords;
-	final->epty = strs[0][i];
-	final->obst = strs[0][i];
-	final->full = strs[0][i];
-	return (final);
+	while (char_is_num(strs[0][i]))
+		i++;
+	tiles.epty = strs[0][i];
+	tiles.obst = strs[0][i + 1];
+	tiles.full = strs[0][i + 2];
+	return (tiles);
+}
+
+/*
+ * Converts an array of strings to
+ * a matrix of t_tile.
+ *
+ * @param	strs	array of strings
+ *
+ * @returns	the map
+ * @returns	NULL if a character (and hence, the map) was invalid
+ */
+t_tile	**bsq_map_from_str(char **strs, t_coords coords, t_tiles tiles)
+{
+	t_tile	**map;
+	int		i;
+	int		j;
+
+	map = bsq_map_init(coords);
+	i = 1;
+	while (i < coords.y)
+	{
+		j = 0;
+		while (j < coords.x)
+		{
+			if (strs[i][j] != tiles.epty && strs[i][j] != tiles.obst
+				&& strs[i][j] != tiles.full)
+			{
+				bsq_map_free(map, coords);
+				return (NULL);
+			}
+			map[i][j] = bsq_map_char_to_tile(strs[i][j], tiles);
+			j++;
+		}
+		i++;
+	}
+	return (map);
 }
 
 /*
@@ -95,18 +115,23 @@ t_map	*bsq_map_read_meta(char **strs, t_coords coords)
  */
 t_map	*bsq_map_read(char *fname, int fsize)
 {
-	t_coords		coords;
+	t_coords	coords;
+	t_tiles		tiles;
+	t_tile		**map;
 	t_map		*final;
 	char		**strs;
-	char		*str;
 
-	str = (char *)ft_file_read(fname, fsize);
-	if (str == NULL)
-		return (NULL);
-	strs = ft_strsplit(str, '\n');
-	free(str);
+	strs = ft_strsplit((char *)ft_file_read(fname, fsize), '\n');
 	if (!bsq_map_valid(strs, &coords))
 		return (NULL);
-	final = bsq_map_read_meta(strs, coords);
+	tiles = bsq_map_meta(strs);
+	map = bsq_map_from_str(strs, coords, tiles);
+	final = malloc(sizeof(t_map));
+	if (map == NULL || final == NULL)
+		return (NULL);
+	free(strs);
+	final->map = map;
+	final->tiles = tiles;
+	final->coords = coords;
 	return (final);
 }

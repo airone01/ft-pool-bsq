@@ -23,7 +23,7 @@
  * 2. Skip `+` and registers _at most_ 1 `-` for negative numbers
  * 3. Registers the number digit by digit until any non-decimal char is found
  * 4. Skips the rest of the string
- * 
+ *
  * Caveats:
  * - Ignores only white spaces first, then only `+`
  * - Doesn't handle multi-negation

@@ -31,6 +31,8 @@ char	**ft_strsplit(char *str, char c)
 	int		index;
 	char	**split;
 
+	if (str == NULL)
+		return (NULL);
 	split = malloc((ft_strcount_words_sep(str, c) + 1) * sizeof(char *));
 	if (!str || !(split))
 		return (0);

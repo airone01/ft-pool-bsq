@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:41:58 by elagouch          #+#    #+#             */
-/*   Updated: 2024/10/01 08:25:58 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/10/01 10:55:36 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,23 @@ typedef struct s_coords
 	int	x;
 	int	y;
 }				t_coords;
-typedef struct s_map
+typedef enum s_tile
 {
-	t_coords	coords;
-	char		**map;
+	epty = 0,
+	obst = 1,
+	full = 9,
+}				t_tile;
+typedef struct s_tiles
+{
 	char		epty;
 	char		obst;
 	char		full;
+}				t_tiles;
+typedef struct s_map
+{
+	t_coords	coords;
+	t_tiles		tiles;
+	t_tile		**map;
 }				t_map;
 typedef enum e_bool
 {

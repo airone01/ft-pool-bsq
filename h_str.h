@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:50:48 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/30 16:03:12 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/10/01 10:49:40 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void			ft_puterr(char *str);
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
 t_bool			char_is_alpha(char c);
 t_bool			char_is_num(char c);
+void			ft_putchar(char c);
 char			*ft_strncpy(char *dest, char *src, unsigned int n);
 char			*ft_strjoin(int size, char **strs, char *sep);
 char			*ft_strcut(char *str, int start, int finish);

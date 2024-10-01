@@ -6,7 +6,7 @@
 #    By: elagouch <elagouch@42>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/30 10:52:47 by elagouch          #+#    #+#              #
-#    Updated: 2024/10/01 10:11:13 by elagouch         ###   ########.fr        #
+#    Updated: 2024/10/01 14:47:05 by elagouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,19 +30,22 @@ SRC = main.c					\
       ft_strlen.c				\
 	  ft_strncpy.c				\
       ft_strnew.c				\
+	  bsq_map_op.c				\
       bsq_map_put.c				\
       bsq_map_read.c			\
       bsq_map_size.c
 OBJ = $(SRC:.c=.o)
 
-all: $(PROG)
+all: tags $(PROG)
+tags:
+	tags *.c
 $(PROG): $(OBJ)
 	$(CC) $(CFLAGS) -o $(PROG) $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) tags
 fclean: clean
 	rm -f $(PROG)
 re: fclean all
