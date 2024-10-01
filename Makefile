@@ -6,11 +6,11 @@
 #    By: elagouch <elagouch@42>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/30 10:52:47 by elagouch          #+#    #+#              #
-#    Updated: 2024/10/01 16:53:24 by elagouch         ###   ########.fr        #
+#    Updated: 2024/10/01 17:13:41 by elagouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROG = bsq
+NAME = bsq
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -Wpedantic -g3
 SRC = main.c					\
@@ -37,11 +37,11 @@ SRC = main.c					\
       bsq_map_size.c
 OBJ = $(SRC:.c=.o)
 
-all: tags $(PROG)
+all: tags $(NAME)
 tags:
 	ctags *.c
-$(PROG): $(OBJ)
-	$(CC) $(CFLAGS) -o $(PROG) $(OBJ)
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -49,7 +49,7 @@ clean:
 	rm -f $(OBJ)
 	rm -f tags
 fclean: clean
-	rm -f $(PROG)
+	rm -f $(NAME)
 re: fclean all
 
 .PHONY: all fclean re
