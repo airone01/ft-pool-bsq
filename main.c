@@ -34,6 +34,7 @@ int	main(int argc, char **argv)
 			break ;
 		}
 		bsq_map_put(*map);
+		bsq_smap_free(map);
 		i++;
 	}
 }

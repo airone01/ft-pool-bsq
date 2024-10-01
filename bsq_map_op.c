@@ -13,8 +13,20 @@
 #include "h_main.h"
 
 /*
- * Frees a map.
+ * Frees a map struct.
  *
+ * @param	map	pointer to a map struct
+ */
+void	bsq_smap_free(t_map *map)
+{
+	bsq_map_free(map->map, map->coords);
+	free(map);
+}
+
+/*
+ * Frees a matrix of tiles.
+ *
+ * @param	map		matrix of tiles
  * @param	coords	lengths of x and y of the map
  */
 void	bsq_map_free(t_tile **map, t_coords coords)
@@ -27,7 +39,7 @@ void	bsq_map_free(t_tile **map, t_coords coords)
 		i++;
 		if (map[i - 1] == NULL)
 			break ;
-		free(map[i]);
+		free(map[i - 1]);
 	}
 	free(map);
 }
