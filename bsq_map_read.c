@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:43:52 by elagouch          #+#    #+#             */
-/*   Updated: 2024/10/01 16:57:46 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/10/01 17:05:02 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ t_map	*bsq_map_read(char *fname, int fsize)
 	final = malloc(sizeof(t_map));
 	if (map == NULL || final == NULL)
 		return (free_and_null(strs));
+	free_strs(strs);
 	free(strs);
 	final->map = map;
 	final->tiles = tiles;
