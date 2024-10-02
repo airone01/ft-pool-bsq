@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:11:15 by elagouch          #+#    #+#             */
-/*   Updated: 2024/10/02 12:04:15 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/10/02 17:56:31 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ t_map	*read_map_from_argv(int *len, char *str)
 	return (map);
 }
 
+#include <stdio.h>
+
 int	main(int argc, char **argv)
 {
 	t_map	*map;
@@ -42,6 +44,7 @@ int	main(int argc, char **argv)
 		if (map == NULL)
 		{
 			ft_puterr("map error\n");
+			// bsq_smap_free(map);
 			break ;
 		}
 		bsq_map_put(*map);

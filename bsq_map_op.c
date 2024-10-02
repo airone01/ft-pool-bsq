@@ -6,11 +6,13 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 14:38:58 by elagouch          #+#    #+#             */
-/*   Updated: 2024/10/02 12:03:56 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/10/02 17:58:32 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "h_main.h"
+
+#include <stdio.h>
 
 /*
  * Frees a map struct.
@@ -34,12 +36,11 @@ void	bsq_map_free(t_tile **map, t_coords coords)
 	int	i;
 
 	i = 0;
-	while (i < coords.y)
+	(void) coords;
+	while (map[i] != NULL)
 	{
+		free(map[i]);
 		i++;
-		if (map[i - 1] == NULL)
-			break ;
-		free(map[i - 1]);
 	}
 	free(map);
 }

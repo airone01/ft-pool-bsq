@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:43:52 by elagouch          #+#    #+#             */
-/*   Updated: 2024/10/02 12:03:19 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/10/02 17:47:51 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,14 +153,16 @@ t_map	*bsq_map_stdin_read(int fsize)
 
 	strs = bsq_read_split_free_stdin(fsize);
 	if (bsq_matrix_count(strs) == 0)
-		return (NULL);
+		return (free_and_null(strs));
 	if (!bsq_map_valid(strs, &coords))
 		return (free_and_null(strs));
 	tiles = bsq_map_meta(strs);
 	map = bsq_map_from_str(strs, coords, tiles);
-	final = malloc(sizeof(t_map));
-	if (map == NULL || final == NULL)
+	if (map == NULL)
 		return (free_and_null(strs));
+	final = malloc(sizeof(t_map));
+	if (final == NULL)
+		return (free_and_null_map(strs, map, coords));
 	free_strs(strs);
 	free(strs);
 	final->map = map;
