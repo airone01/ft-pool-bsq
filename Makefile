@@ -6,7 +6,7 @@
 #    By: elagouch <elagouch@42>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/30 10:52:47 by elagouch          #+#    #+#              #
-#    Updated: 2024/10/02 18:45:09 by elagouch         ###   ########.fr        #
+#    Updated: 2024/10/02 19:34:51 by elagouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ SRC = main.c					\
       bsq_map_put.c				\
       bsq_map_read.c			\
       bsq_map_read2.c			\
-      bsq_map_size.c
+      bsq_map_size.c			\
+	  bsq_solve.c
 OBJ = $(SRC:.c=.o)
 
 all: tags $(NAME)

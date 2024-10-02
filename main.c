@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:11:15 by elagouch          #+#    #+#             */
-/*   Updated: 2024/10/02 17:56:31 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/10/02 19:38:08 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	main(int argc, char **argv)
 			bsq_smap_free(map);
 			break ;
 		}
+		bsq_solve(*map);
 		bsq_map_put(*map);
 		bsq_smap_free(map);
 		i++;
