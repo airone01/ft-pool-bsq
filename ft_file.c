@@ -52,13 +52,12 @@ void	*ft_file_read(char *fname, int fsize)
 void	*ft_stdin_read(int fsize)
 {
 	void	*buff;
+	int		sread;
 
 	buff = malloc(fsize * sizeof(char) + 1);
-	if (read(0, buff, fsize) == -1)
-	{
-		free(buff);
-		return (NULL);
-	}
-	((char *)buff)[fsize] = '\0';
+	sread = read(0, buff, fsize);
+	if (sread == -1)
+		return (free_and_null(buff));
+	((char *)buff)[sread] = '\0';
 	return (buff);
 }

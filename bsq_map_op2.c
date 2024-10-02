@@ -45,7 +45,7 @@ char	**bsq_read_split_free_stdin(int fsize)
 	char	*str;
 	char	**strs;
 
-	str = ft_stdin_read(fsize);
+	str = (char *)ft_stdin_read(fsize);
 	strs = ft_strsplit(str, '\n');
 	free(str);
 	return (strs);
