@@ -13,7 +13,7 @@
 <div align="center">
   <img src="https://skillicons.dev/icons?i=git,c,vim,linux" />
   <h3>BSQ</h3>
-  <h6>By Mathis & Erwann</h6>
+  <h6>By <code>macombe</code> & <code>elagouch</code></h6>
 </div>
 
 ---
