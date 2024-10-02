@@ -51,8 +51,8 @@ char	**ft_strsplit(char *str, char c)
 	{
 		if (str[ij[0]] != c && index < 0)
 			index = ij[0];
-		else if ((str[ij[0]] == c
-				|| ij[0] == (size_t)ft_strlen(str)) && index >= 0)
+		else if ((str[ij[0]] == c || ij[0] == (size_t)ft_strlen(str))
+			&& index >= 0)
 			ft_strsplit_stupid(ij, str, &index, split);
 		ij[0]++;
 	}

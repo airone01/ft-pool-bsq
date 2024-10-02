@@ -14,7 +14,7 @@
 
 t_map	*all_final(t_tile **map, t_tiles tiles, char **strs, t_coords coords)
 {
-	t_map		*final;
+	t_map	*final;
 
 	final = malloc(sizeof(t_map));
 	free_strs(strs);

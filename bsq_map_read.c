@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:43:52 by elagouch          #+#    #+#             */
-/*   Updated: 2024/10/02 19:38:00 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/10/02 19:40:40 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,8 +134,6 @@ t_map	*bsq_map_read(char *fname, int fsize)
 	}
 	return (all_final(map, tiles, strs, coords));
 }
-
-#include <stdio.h>
 
 /*
  * Reads a map from STDIN.

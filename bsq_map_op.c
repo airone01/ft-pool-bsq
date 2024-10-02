@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "h_main.h"
-
 #include <stdio.h>
 
 /*
@@ -78,7 +77,7 @@ t_tile	**bsq_map_init(t_coords coords)
  * Counts the number of lines before NUL in an array of strings.
  *
  * @param	strs	array of strings
- * 
+ *
  * @returns	number of lines
  */
 int	bsq_matrix_count(char **strs)
