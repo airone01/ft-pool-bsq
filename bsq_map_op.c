@@ -82,7 +82,7 @@ t_tile	**bsq_map_init(t_coords coords)
  */
 int	bsq_matrix_count(char **strs)
 {
-	while (!*strs)
+	while (!strs || !*strs)
 		return (0);
 	return (bsq_matrix_count(strs + 1) + 1);
 }

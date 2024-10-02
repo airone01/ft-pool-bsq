@@ -30,11 +30,8 @@ t_bool	bsq_map_valid(char **strs, t_coords *coords)
 	if (strs == NULL)
 		return (false);
 	coords->y = ft_atoi(strs[0]);
-	i = 0;
-	while (strs[i])
-		i++;
 	coords->x = ft_strlen(strs[1]);
-	if (i - 1 != coords->y)
+	if (bsq_matrix_count(strs) - 1 != coords->y)
 		return (false);
 	i = 1;
 	while (i < coords->y - 1)
@@ -121,6 +118,8 @@ t_map	*bsq_map_read(char *fname, int fsize)
 	char		**strs;
 
 	strs = bsq_read_split_free(fname, fsize);
+	if (bsq_matrix_count(strs) == 0)
+		return (NULL);
 	if (!bsq_map_valid(strs, &coords))
 		return (free_and_null(strs));
 	tiles = bsq_map_meta(strs);
@@ -135,6 +134,8 @@ t_map	*bsq_map_read(char *fname, int fsize)
 	final->coords = coords;
 	return (final);
 }
+
+#include <stdio.h>
 
 /*
  * Reads a map from STDIN.
@@ -151,6 +152,8 @@ t_map	*bsq_map_stdin_read(int fsize)
 	char		**strs;
 
 	strs = bsq_read_split_free_stdin(fsize);
+	if (bsq_matrix_count(strs) == 0)
+		return (NULL);
 	if (!bsq_map_valid(strs, &coords))
 		return (free_and_null(strs));
 	tiles = bsq_map_meta(strs);

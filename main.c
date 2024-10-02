@@ -23,11 +23,6 @@ t_map	*read_map_from_argv(int *len, char *str)
 		return (NULL);
 	}
 	map = bsq_map_read(str, *len);
-	if (map == NULL)
-	{
-		ft_puterr("map error\n");
-		return (NULL);
-	}
 	return (map);
 }
 
@@ -44,6 +39,11 @@ int	main(int argc, char **argv)
 			map = bsq_map_stdin_read(2048);
 		else
 			map = read_map_from_argv(&len, argv[i]);
+		if (map == NULL)
+		{
+			ft_puterr("map error\n");
+			break ;
+		}
 		bsq_map_put(*map);
 		bsq_smap_free(map);
 		i++;

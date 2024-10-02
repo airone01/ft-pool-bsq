@@ -24,6 +24,7 @@ void	bsq_map_put(t_map map);
 char	**bsq_read_split_free(char *fname, int fsize);
 char	**bsq_read_split_free_stdin(int fsize);
 int		bsq_handle_size(int fd, void *buff);
+int		bsq_matrix_count(char **strs);
 int		bsq_map_file_size(char *arg);
 
 #endif
