@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 		if (map == NULL)
 		{
 			ft_puterr("map error\n");
-			// bsq_smap_free(map);
+			bsq_smap_free(map);
 			break ;
 		}
 		bsq_map_put(*map);

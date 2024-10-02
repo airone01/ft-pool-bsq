@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:43:52 by elagouch          #+#    #+#             */
-/*   Updated: 2024/10/02 17:47:51 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/10/02 19:00:59 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,25 +114,25 @@ t_map	*bsq_map_read(char *fname, int fsize)
 	t_coords	coords;
 	t_tiles		tiles;
 	t_tile		**map;
-	t_map		*final;
 	char		**strs;
 
 	strs = bsq_read_split_free(fname, fsize);
 	if (bsq_matrix_count(strs) == 0)
+	{
+		free_strs(strs);
 		return (NULL);
+	}
 	if (!bsq_map_valid(strs, &coords))
 		return (free_and_null(strs));
 	tiles = bsq_map_meta(strs);
 	map = bsq_map_from_str(strs, coords, tiles);
-	final = malloc(sizeof(t_map));
-	if (map == NULL || final == NULL)
-		return (free_and_null(strs));
-	free_strs(strs);
-	free(strs);
-	final->map = map;
-	final->tiles = tiles;
-	final->coords = coords;
-	return (final);
+	if (map == NULL)
+	{
+		bsq_map_free(map, coords);
+		free_strs(strs);
+		return (NULL);
+	}
+	return (all_final(map, tiles, strs, coords));
 }
 
 #include <stdio.h>

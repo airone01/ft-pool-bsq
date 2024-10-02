@@ -21,7 +21,8 @@
  */
 void	bsq_smap_free(t_map *map)
 {
-	bsq_map_free(map->map, map->coords);
+	if (map != NULL)
+		bsq_map_free(map->map, map->coords);
 	free(map);
 }
 
@@ -36,8 +37,7 @@ void	bsq_map_free(t_tile **map, t_coords coords)
 	int	i;
 
 	i = 0;
-	(void) coords;
-	while (map[i] != NULL)
+	while (i < coords.y)
 	{
 		free(map[i]);
 		i++;
