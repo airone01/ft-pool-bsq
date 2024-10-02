@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:54:39 by elagouch          #+#    #+#             */
-/*   Updated: 2024/10/01 15:12:28 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/10/02 10:50:28 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,28 @@ void	*ft_file_read(char *fname, int fsize)
 		return (NULL);
 	}
 	close(fd);
+	((char *)buff)[fsize] = '\0';
+	return (buff);
+}
+
+/*
+ * Allocates a buffer and reads a file to it.
+ *
+ * @param	fsize	number of bytes to read
+ *
+ * @returns	buffer with read data
+ * @returns	null if error
+ */
+void	*ft_stdin_read(int fsize)
+{
+	void	*buff;
+
+	buff = malloc(fsize * sizeof(char) + 1);
+	if (read(0, buff, fsize) == -1)
+	{
+		free(buff);
+		return (NULL);
+	}
 	((char *)buff)[fsize] = '\0';
 	return (buff);
 }

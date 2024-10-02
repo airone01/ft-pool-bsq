@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:34:24 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/30 14:50:08 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/10/02 10:54:12 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  *
  * @returns	amount of readable bytes
  */
-int	handle_size(int fd, void *buff)
+int	bsq_handle_size(int fd, void *buff)
 {
 	int	size;
 	int	count;
@@ -59,7 +59,7 @@ int	bsq_map_file_size(char *fname)
 	if (fd == -1)
 		return (-1);
 	buff = malloc(100 * sizeof(char));
-	count = handle_size(fd, buff);
+	count = bsq_handle_size(fd, buff);
 	if (count == -1)
 		return (-1);
 	free(buff);

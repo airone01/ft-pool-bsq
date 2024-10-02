@@ -6,12 +6,11 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:43:52 by elagouch          #+#    #+#             */
-/*   Updated: 2024/10/01 17:15:20 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/10/02 12:03:19 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "h_main.h"
-#include <stdio.h>
 
 /*
  * Checks if the map is correct by calculating
@@ -83,8 +82,9 @@ t_tile	**bsq_map_from_str(char **strs, t_coords coords, t_tiles tiles)
 	int		i;
 	int		j;
 
+	strs++;
 	map = bsq_map_init(coords);
-	i = 1;
+	i = 0;
 	while (i < coords.y)
 	{
 		j = 0;
@@ -101,24 +101,6 @@ t_tile	**bsq_map_from_str(char **strs, t_coords coords, t_tiles tiles)
 		i++;
 	}
 	return (map);
-}
-
-/*
- * Reads a file, then splits it, then frees the data and returns the
- * split result.
- *
- * @param	fname	file name
- * @param	fsize	how many bytes to read
- */
-char	**bsq_read_split_free(char *fname, int fsize)
-{
-	char	*str;
-	char	**strs;
-
-	str = (char *)ft_file_read(fname, fsize);
-	strs = ft_strsplit(str, '\n');
-	free(str);
-	return (strs);
 }
 
 /*
@@ -139,6 +121,36 @@ t_map	*bsq_map_read(char *fname, int fsize)
 	char		**strs;
 
 	strs = bsq_read_split_free(fname, fsize);
+	if (!bsq_map_valid(strs, &coords))
+		return (free_and_null(strs));
+	tiles = bsq_map_meta(strs);
+	map = bsq_map_from_str(strs, coords, tiles);
+	final = malloc(sizeof(t_map));
+	if (map == NULL || final == NULL)
+		return (free_and_null(strs));
+	free_strs(strs);
+	free(strs);
+	final->map = map;
+	final->tiles = tiles;
+	final->coords = coords;
+	return (final);
+}
+
+/*
+ * Reads a map from STDIN.
+ *
+ * @returns	allocated map with data
+ * @returns	null if error
+ */
+t_map	*bsq_map_stdin_read(int fsize)
+{
+	t_coords	coords;
+	t_tiles		tiles;
+	t_tile		**map;
+	t_map		*final;
+	char		**strs;
+
+	strs = bsq_read_split_free_stdin(fsize);
 	if (!bsq_map_valid(strs, &coords))
 		return (free_and_null(strs));
 	tiles = bsq_map_meta(strs);

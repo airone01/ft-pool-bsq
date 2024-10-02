@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "h_main.h"
-#include <stdio.h>
 
 /*
  * Puts a tile to the string. Needs the map to convert it to a character.

@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 14:38:58 by elagouch          #+#    #+#             */
-/*   Updated: 2024/10/01 14:46:11 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/10/02 12:03:56 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,18 @@ t_tile	**bsq_map_init(t_coords coords)
 		i++;
 	}
 	return (map);
+}
+
+/*
+ * Counts the number of lines before NUL in an array of strings.
+ *
+ * @param	strs	array of strings
+ * 
+ * @returns	number of lines
+ */
+int	bsq_matrix_count(char **strs)
+{
+	while (!*strs)
+		return (0);
+	return (bsq_matrix_count(strs + 1) + 1);
 }

@@ -6,7 +6,7 @@
 #    By: elagouch <elagouch@42>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/30 10:52:47 by elagouch          #+#    #+#              #
-#    Updated: 2024/10/01 17:13:41 by elagouch         ###   ########.fr        #
+#    Updated: 2024/10/02 11:51:00 by elagouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRC = main.c					\
 	  ft_strncpy.c				\
       ft_strnew.c				\
 	  bsq_map_op.c				\
+	  bsq_map_op2.c				\
       bsq_map_put.c				\
       bsq_map_read.c			\
       bsq_map_size.c
